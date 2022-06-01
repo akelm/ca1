@@ -1,4 +1,6 @@
+import logging
 import os
+import shutil
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -18,7 +20,10 @@ def history_to_img(history):
     yticks = np.arange(yticks_len+1)-0.5
     xrange = xticks[0], xticks[-1]
     yrange = yticks[0], yticks[-1]
-    os.makedirs("img", exist_ok=False)
+    logging.debug("plotting, before makedirs")
+    shutil.rmtree('img',ignore_errors=True)
+    os.makedirs("img", exist_ok=True)
+    logging.debug("plotting, after makedirs")
     for ind, current in enumerate(history):
         for label, arr in zip(('state', 'strategy',"payoff"), (current.states, current.strategies, current.payoff)):
             ax.cla()

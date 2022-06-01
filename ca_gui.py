@@ -20,7 +20,8 @@ import logging
 addLoggingLevel("custom", 51, methodName="custom")
 
 
-logging.basicConfig(filename='debug.txt', level="custom", format="%(message)s", filemode='w')
+# logging.basicConfig(filename='debug.txt', level="custom", format="%(message)s", filemode='w')
+logging.basicConfig(filename='debug_tmp.txt', level=logging.DEBUG ,filemode='w')
 
 
 class Worker(QObject):
@@ -34,6 +35,7 @@ class Worker(QObject):
     def run(self):
         """Long-running task."""
         calc(self.params)
+        logging.debug("calc finished")
         self.finished.emit()
 
 

@@ -46,11 +46,14 @@ def calc(params: Parameters):
     history = [deepcopy(current)]
     for i in range(params.num_of_iter):
         log_iter(i)
+        logging.debug("iteration %d in calc.py" % i)
         current = iterate(current, params)
         history.append(deepcopy(current))
-
+    logging.debug("finished iterations in calc.py")
     statistics_single(history)
+    logging.debug("statistics finished in calc.py")
     history_to_img(history)
+    logging.debug("plotting finished in calc.py")
 
 
 
