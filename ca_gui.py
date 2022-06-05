@@ -136,11 +136,11 @@ class UserInterface(QtWidgets.QMainWindow):
             params = Parameters(**param_dict).freeze()
             self.num_iter = params.num_of_iter
             self.num_exper = params.num_of_exper
-            self.startCalc(params)
+            self.start_calc(params)
             self.state = State.running
             self.start_pushButton.setEnabled(False)
 
-    def startCalc(self, params):
+    def start_calc(self, params):
         # Step 2: Create a QThread object
         self.thread = QThread()
         # Step 3: Create a worker object

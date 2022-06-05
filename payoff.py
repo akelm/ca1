@@ -11,7 +11,7 @@ def payoff_table(state_arr, params):
         view: np.ndarray = np.lib.stride_tricks.sliding_window_view(np.pad(state_arr, 1), (3, 3)).reshape(
             [-1, 3, 3])
         df = pd.DataFrame({
-            "idx": np.arange(state_arr.size)+1,
+            "idx": np.arange(state_arr.size) + 1,
             "i": np.indices(state_arr.shape)[0].reshape(-1) + 1,
             "j": np.indices(state_arr.shape)[1].reshape(-1) + 1,
             "state": state_arr.flat,
@@ -31,11 +31,11 @@ def payoff_table(state_arr, params):
             df[col_pay][d_inds] = pay
             df[col_ones][d_inds] = ones
 
-        logging.custom(" CALCULATE PAYOFF ".center(80,"#"))
+        logging.custom(" CALCULATE PAYOFF ".center(80, "#"))
         logging.custom(df.to_string(index=False))
 
     def log_payoff_table():
-        logging.custom(" PAYOFF ARRAY ".center(80,"#"))
+        logging.custom(" PAYOFF ARRAY ".center(80, "#"))
         logging.custom(pd.DataFrame(payoff_array).to_string(index=False, header=False))
 
     view: np.ndarray = np.lib.stride_tricks.sliding_window_view(np.pad(state_arr, 1), (3, 3)).reshape(
@@ -56,7 +56,7 @@ def payoff_table(state_arr, params):
                  params.dc_reward * num_correct_c + params.dc_penalty * num_incorrect_c
         if params.if_special_penalty:
             ind_of_0 = view[d_inds, :, :].sum(axis=1).sum(axis=1) == 0
-            payoff[ind_of_0]=params.special_penalty
+            payoff[ind_of_0] = params.special_penalty
         payoff_d_list.append(payoff)
         ones_d_list.append(num_correct_c)
 

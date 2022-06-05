@@ -12,11 +12,11 @@ cool = cm.get_cmap('cool', 8)
 Wistia = cm.get_cmap('Wistia', 8)
 binary = cm.get_cmap('binary', 2)
 
-newcolors = np.vstack((np.array([0.9, 0.9, 0.9, 1]) * winter(np.linspace(0, 1, 8)) ** np.array([4, 0.5, 0.9, 1]),
-                       cool(np.linspace(0, 1, 8)),
-                       Wistia(np.linspace(0, 1, 8)),
-                       binary([0, 1])))
-strat_cmp = ListedColormap(newcolors)
+new_colors = np.vstack((np.array([0.9, 0.9, 0.9, 1]) * winter(np.linspace(0, 1, 8)) ** np.array([4, 0.5, 0.9, 1]),
+                        cool(np.linspace(0, 1, 8)),
+                        Wistia(np.linspace(0, 1, 8)),
+                        binary([0, 1])))
+strat_cmp = ListedColormap(new_colors)
 state_cmp = cm.get_cmap('binary', 2)
 rdbu = cm.get_cmap('BrBG', 17)
 newcolors_rdbu = rdbu(np.linspace(0, 1, 17))

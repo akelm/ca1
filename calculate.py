@@ -47,7 +47,7 @@ def log_exper(i: int):
 
 def calc(params: Parameters):
     def log_params():
-        logging.custom((" PARAMETERS ").center(80, "#"))
+        logging.custom(" PARAMETERS ".center(80, "#"))
         logging.custom("\n")
         logging.custom(pformat(asdict(params), sort_dicts=False))
 
@@ -107,7 +107,7 @@ def new_state_array(state_arr, strat_arr):
 
 
 def iterate(current, params):
-    # chagne state
+    # change state
     new_states = new_state_array(current.states, current.strategies)
 
     # payoff  with opt sharing
