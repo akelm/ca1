@@ -1,27 +1,32 @@
+import logging
 import os.path
-from dataclasses import asdict
-from pprint import pprint, pformat
-from time import sleep
-
-from PyQt5 import QtWidgets
-
 import sys
 
+from PyQt5 import QtWidgets
 from PyQt5.QtCore import QObject, pyqtSignal, QThread
-from PyQt5.QtWidgets import QPushButton, QFileDialog
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QPushButton, QFileDialog, QSpinBox, QComboBox, QLabel
 from PyQt5.uic import loadUi
 
 from add_log_level import addLoggingLevel
+from calc_mappings import img_file_pattern, img_file_labels
 from calculate import calc
 from parameters import Parameters
 from params_mapping import getters
 
-import logging
-addLoggingLevel("custom", 51, methodName="custom")
+try:
+    addLoggingLevel("custom", 51, methodName="custom")
+except AttributeError:
+    pass
+logging.basicConfig(filename='debug.txt', level="custom", format="%(message)s", filemode='w')
 
 
-# logging.basicConfig(filename='debug.txt', level="custom", format="%(message)s", filemode='w')
-logging.basicConfig(filename='debug_tmp.txt', level=logging.DEBUG ,filemode='w')
+# logging.basicConfig(filename='debug_tmp.txt', level=logging.DEBUG ,filemode='w')
+
+
+class State:
+    stopped = 0
+    running = 1
 
 
 class Worker(QObject):
@@ -41,17 +46,30 @@ class Worker(QObject):
 
 class UserInterface(QtWidgets.QMainWindow):
 
-
-
-
     def __init__(self):
         super(UserInterface, self).__init__()
-        loadUi('untitled.ui', self)
+        loadUi('res/untitled.ui', self)
+        self.setFixedSize(self.width(), self.height())
+        self.start_pushButton: QPushButton
         self.start_pushButton.clicked.connect(self.start)
         self.readca_btn.clicked.connect(self.getfile)
         self.readstr_btn.clicked.connect(self.getfile)
         self.debug_checkBox.stateChanged.connect(self.set_debug_btn)
-        self.seedCheckBox.stateChanged.connect(lambda : self.seedLineEdit.setEnabled(self.seedCheckBox.isChecked()))
+        self.seedCheckBox.stateChanged.connect(lambda: self.seedLineEdit.setEnabled(self.seedCheckBox.isChecked()))
+
+        self.spinBox_iter_step: QSpinBox
+        self.spinBox_iter_step.valueChanged.connect(self.change_img)
+        self.spinBox_exp_no.valueChanged.connect(self.change_img)
+
+        self.comboBox_states: QComboBox
+        self.comboBox_states.currentIndexChanged.connect(self.change_img)
+        # self.comboBox_states.currentTextChanged.connect(self.change_img)
+        self.plot_label: QLabel
+        self.plot_label.setScaledContents(True)
+
+        self.state = State.stopped
+        self.num_iter = 0
+        self.num_exper = 0
         self.show()
 
     def set_debug_btn(self):
@@ -65,64 +83,64 @@ class UserInterface(QtWidgets.QMainWindow):
         sender: QPushButton = self.sender()
         sender.setText(rel_file)
 
-
-
-
     def start(self):
+        if self.state == State.stopped:
 
+            params_records = (
+                (self.m2RowsLineEdit, "mrows"),
+                (self.n2ColsLineEdit, "ncols"),
+                (self.p_init_CLineEdit, "p_init_c"),
+                (self.sharingCheckBox, "sharing"),
+                (self.computationTypeComboBox, "competition_type"),
+                (self.p_state_mutLineEdit, "p_state_mut"),
+                (self.p_strat_mutLineEdit, "p_strat_mut"),
+                (self.p_0_neighLineEdit, "p_0_neigh"),
+                (self.num_of_iterLineEdit, "num_of_iter"),
+                (self.num_of_experLineEdit, "num_of_exper"),
+                (self.seedCheckBox, "if_seed"),
+                (self.seedLineEdit, "seed"),
 
-        params_records = (
-            (self.m2RowsLineEdit, "mrows"),
-            (self.n2ColsLineEdit, "ncols"),
-            (self.p_init_CLineEdit, "p_init_c"),
-            (self.sharingCheckBox, "sharing"),
-            (self.computationTypeComboBox, "competition_type"),
-            (self.p_state_mutLineEdit, "p_state_mut"),
-            (self.p_strat_mutLineEdit, "p_strat_mut"),
-            (self.p_0_neighLineEdit, "p_0_neigh"),
-            (self.num_of_iterLineEdit, "num_of_iter"),
-            (self.num_of_experLineEdit, "num_of_exper"),
-            (self.seedCheckBox, "if_seed"),
-            (self.seedLineEdit, "seed"),
+                (self.dd_penalty_lineEdit, "dd_penalty"),
+                (self.dc_penalty_lineEdit, "dc_penalty"),
+                (self.dd_reward_lineEdit, "dd_reward"),
+                (self.dc_reward_lineEdit, "dc_reward"),
+                (self.cd_reward_lineEdit, "cd_reward"),
+                (self.cc_penalty_lineEdit, "cc_penalty"),
+                (self.special_penalty_checkbox, "if_special_penalty"),
+                (self.special_penalty_LineEdit, "special_penalty"),
 
-            (self.dd_penalty_lineEdit, "dd_penalty"),
-            (self.dc_penalty_lineEdit, "dc_penalty"),
-            (self.dd_reward_lineEdit, "dd_reward"),
-            (self.dc_reward_lineEdit, "dc_reward"),
-            (self.cd_reward_lineEdit, "cd_reward"),
-            (self.cc_penalty_lineEdit, "cc_penalty"),
-            (self.special_penalty_checkbox, "if_special_penalty"),
-            (self.special_penalty_LineEdit, "special_penalty"),
+                (self.allCLineEdit, "cc_penalty"),
+                (self.allDLineEdit, "cc_penalty"),
+                (self.kDLineEdit, "cc_penalty"),
+                (self.kCLineEdit, "cc_penalty"),
+                (self.kDCLineEdit, "cc_penalty"),
+                (self.kconst_LineEdit, "k_const"),
+                (self.kvar1_LineEdit, "k_var_0"),
+                (self.kvar2_LineEdit, "k_var_1"),
+                (self.k_buttonGroup, "k_change"),
 
+                (self.species_comboBox, "species"),
+                (self.level_LineEdit, "synchronization"),
+                (self.debug_checkBox, "debug"),
+                (self.readca_btn, "state_filename"),
+                (self.readstr_btn, "strat_filename")
 
-            (self.allCLineEdit, "cc_penalty"),
-            (self.allDLineEdit, "cc_penalty"),
-            (self.kDLineEdit, "cc_penalty"),
-            (self.kCLineEdit, "cc_penalty"),
-            (self.kDCLineEdit, "cc_penalty"),
-            (self.kconst_LineEdit, "k_const"),
-            (self.kvar1_LineEdit, "k_var_0"),
-            (self.kvar2_LineEdit, "k_var_1"),
-            (self.k_buttonGroup, "k_change"),
+            )
 
-            (self.species_comboBox, "species"),
-            (self.level_LineEdit, "synchronization"),
-            (self.debug_checkBox, "debug"),
-            (self.readca_btn, "state_filename"),
-            (self.readstr_btn, "strat_filename")
+            param_dict = {}
 
-        )
+            for ui_object, param_object in params_records:
+                ui_getter = getters[type(ui_object)]
+                param_dict[param_object] = ui_getter(ui_object)
 
-        param_dict = {}
+            params = Parameters(**param_dict).freeze()
+            self.num_iter = params.num_of_iter
+            self.num_exper = params.num_of_exper
+            self.startCalc(params)
+            self.state = State.running
+            self.start_pushButton.setEnabled(False)
 
-        for ui_object, param_object in params_records:
-            ui_getter = getters[type(ui_object)]
-            param_dict[param_object] = ui_getter(ui_object)
-
-        params = Parameters(**param_dict).freeze()
-
-
-
+    def startCalc(self, params):
         # Step 2: Create a QThread object
         self.thread = QThread()
         # Step 3: Create a worker object
@@ -136,20 +154,35 @@ class UserInterface(QtWidgets.QMainWindow):
         # self.worker.progress.connect(self.reportProgress)
         # Step 6: Start the thread
         self.thread.start()
-
-        self.start_pushButton.setEnabled(False)
         self.thread.finished.connect(
-            lambda: self.start_pushButton.setEnabled(True)
+            self.on_stop_calc
         )
 
+    def on_stop_calc(self):
+        self.state = State.stopped
+        self.start_pushButton.setEnabled(True)
 
+        self.spinBox_iter_step.setEnabled(True)
+        self.spinBox_iter_step.setMaximum(self.num_iter)
+        self.spinBox_exp_no.setEnabled(True)
+        self.spinBox_exp_no.setMaximum(self.num_exper)
+        self.comboBox_states.setEnabled(True)
+        self.change_img()
 
+    def change_img(self):
+        iter_num = self.spinBox_iter_step.value()
+        exper_num = self.spinBox_exp_no.value()
+        self.comboBox_states: QComboBox
+        disp_state = self.comboBox_states.currentIndex()
 
-
-
+        if 0 <= iter_num <= self.num_iter and 0 < exper_num <= self.num_exper and 0 <= disp_state < len(
+                img_file_labels):
+            img_file = img_file_pattern % (exper_num, img_file_labels[disp_state], iter_num)
+            pixmap = QPixmap(img_file)
+            self.plot_label.setPixmap(pixmap)
+            self.plot_label.show()
 
 
 app = QtWidgets.QApplication(sys.argv)
 window = UserInterface()
 app.exec_()
-

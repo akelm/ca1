@@ -1,23 +1,27 @@
-from dataclasses import dataclass, field, InitVar, asdict, make_dataclass, fields, astuple
+import string
+from dataclasses import dataclass, field, InitVar, asdict, make_dataclass, fields
 from datetime import datetime
 
 import numpy as np
-import string
 
-COMP_PROP = 0
-COMP_TOUR = 1
 
-K_CONST = 0
-K_VAR = 1
+class CompetitionType:
+    proportional = 0
+    tournament = 1
+
+
+class KType:
+    constant = 0
+    variable = 1
 
 
 @dataclass
 class Parameters:
     mrows: int = 20
     ncols: int = 20
-    p_init_c: int = 0.5
+    p_init_c: float = 0.5
     sharing: int = False
-    competition_type: int = COMP_TOUR
+    competition_type: int = CompetitionType.tournament
     p_state_mut: float = 0
     p_strat_mut: float = 0
     p_0_neigh: float = 0
@@ -39,7 +43,7 @@ class Parameters:
     k_d: float = 0.2
     k_c: float = 0.2
     k_dc: float = 0.2
-    k_change: int = K_CONST
+    k_change: int = KType.constant
     k_const: int = 4
     k_var_0: int = 0
     k_var_1: int = 7
@@ -62,11 +66,10 @@ class Parameters:
             self.ca_strat = np.loadtxt(strat_filename, dtype=str)
 
             self.ca_strat = np.char.upper(self.ca_strat)
-            self.ca_strat = np.char.translate(self.ca_strat, "*", deletechars=string.whitespace+string.punctuation)
+            self.ca_strat = np.char.translate(self.ca_strat, "*", deletechars=string.whitespace + string.punctuation)
             if self.ca_strat.shape != self.ca_state.shape:
                 raise Exception("ca_state and ca_strat have diff size.")
             self.mrows, self.ncols = self.ca_state.shape
-
 
         self.min_payoff = min(self.dd_penalty,
                               self.dc_penalty,
@@ -78,8 +81,7 @@ class Parameters:
             self.min_payoff = min(self.min_payoff, self.special_penalty)
 
         if not self.if_seed:
-            self.seed = datetime.now().timestamp()
-
+            self.seed = int(datetime.now().timestamp())
 
         self.mrows = int(self.mrows)
         self.ncols = int(self.ncols)
@@ -89,7 +91,7 @@ class Parameters:
         self.num_of_iter = int(self.num_of_iter)
         self.num_of_exper = int(self.num_of_exper)
         self.if_seed = int(self.if_seed)
-        self.seed =  int(self.seed) if self.seed is not None else self.seed
+        self.seed = abs(int(self.seed)) if self.seed is not None else self.seed
         self.if_special_penalty = int(self.if_special_penalty)
         self.k_change = int(self.k_change)
         self.k_const = int(self.k_const)
@@ -99,12 +101,8 @@ class Parameters:
         self.synchronization = int(self.synchronization)
         self.debug = int(self.debug)
 
-
-
     def freeze(self):
         return FrozenParameters(**asdict(self))
 
 
-FrozenParameters = make_dataclass("FrozenParameters", [ (f.name, f.type) for f in   fields(Parameters)], frozen=True)
-
-
+FrozenParameters = make_dataclass("FrozenParameters", [(f.name, f.type) for f in fields(Parameters)], frozen=True)

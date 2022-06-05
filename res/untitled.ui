@@ -59,7 +59,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="allCLineEdit">
+       <widget class="QDoubleSpinBox" name="allCLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -78,8 +78,20 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>0.33</string>
+        <property name="text" stdset="0">
+         <string>0,330</string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.330000000000000</double>
         </property>
        </widget>
       </item>
@@ -91,7 +103,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="allDLineEdit">
+       <widget class="QDoubleSpinBox" name="allDLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -110,8 +122,20 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>0.33</string>
+        <property name="text" stdset="0">
+         <string>0,330</string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.330000000000000</double>
         </property>
        </widget>
       </item>
@@ -123,7 +147,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="kDLineEdit">
+       <widget class="QDoubleSpinBox" name="kDLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -142,8 +166,20 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>0.34</string>
+        <property name="text" stdset="0">
+         <string>0,110</string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.110000000000000</double>
         </property>
        </widget>
       </item>
@@ -155,7 +191,7 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QLineEdit" name="kCLineEdit">
+       <widget class="QDoubleSpinBox" name="kCLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -174,8 +210,20 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>0</string>
+        <property name="text" stdset="0">
+         <string>0,110</string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.110000000000000</double>
         </property>
        </widget>
       </item>
@@ -187,7 +235,7 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QLineEdit" name="kDCLineEdit">
+       <widget class="QDoubleSpinBox" name="kDCLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -206,8 +254,20 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>0</string>
+        <property name="text" stdset="0">
+         <string>0,110</string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.110000000000000</double>
         </property>
        </widget>
       </item>
@@ -225,7 +285,7 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QLineEdit" name="kconst_LineEdit">
+       <widget class="QSpinBox" name="kconst_LineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -244,8 +304,14 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
+        <property name="text" stdset="0">
          <string>3</string>
+        </property>
+        <property name="maximum">
+         <number>7</number>
+        </property>
+        <property name="value">
+         <number>3</number>
         </property>
        </widget>
       </item>
@@ -263,7 +329,7 @@
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QLineEdit" name="kvar1_LineEdit">
+       <widget class="QSpinBox" name="kvar1_LineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -282,8 +348,11 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
+        <property name="text" stdset="0">
          <string>0</string>
+        </property>
+        <property name="maximum">
+         <number>7</number>
         </property>
        </widget>
       </item>
@@ -295,7 +364,7 @@
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QLineEdit" name="kvar2_LineEdit">
+       <widget class="QSpinBox" name="kvar2_LineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -314,8 +383,14 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
+        <property name="text" stdset="0">
          <string>4</string>
+        </property>
+        <property name="maximum">
+         <number>7</number>
+        </property>
+        <property name="value">
+         <number>4</number>
         </property>
        </widget>
       </item>
@@ -368,9 +443,9 @@
      <property name="geometry">
       <rect>
        <x>12</x>
-       <y>32</y>
+       <y>30</y>
        <width>191</width>
-       <height>350</height>
+       <height>346</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout">
@@ -385,7 +460,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="m2RowsLineEdit">
+       <widget class="QSpinBox" name="m2RowsLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -398,8 +473,14 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
+        <property name="text" stdset="0">
          <string>5</string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="value">
+         <number>5</number>
         </property>
        </widget>
       </item>
@@ -411,7 +492,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="n2ColsLineEdit">
+       <widget class="QSpinBox" name="n2ColsLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -424,8 +505,14 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
+        <property name="text" stdset="0">
          <string>5</string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="value">
+         <number>5</number>
         </property>
        </widget>
       </item>
@@ -437,7 +524,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="p_init_CLineEdit">
+       <widget class="QDoubleSpinBox" name="p_init_CLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -450,8 +537,29 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>0.1</string>
+        <property name="text" stdset="0">
+         <string>0,001</string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="minimum">
+         <double>0.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="stepType">
+         <enum>QAbstractSpinBox::DefaultStepType</enum>
+        </property>
+        <property name="value">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="displayIntegerBase" stdset="0">
+         <number>10</number>
         </property>
        </widget>
       </item>
@@ -500,7 +608,7 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QLineEdit" name="p_state_mutLineEdit">
+       <widget class="QDoubleSpinBox" name="p_state_mutLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -513,8 +621,20 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>0.001</string>
+        <property name="text" stdset="0">
+         <string>0,010</string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.010000000000000</double>
         </property>
        </widget>
       </item>
@@ -526,7 +646,7 @@
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QLineEdit" name="p_strat_mutLineEdit">
+       <widget class="QDoubleSpinBox" name="p_strat_mutLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -539,8 +659,20 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>0.01</string>
+        <property name="text" stdset="0">
+         <string>0,001</string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.001000000000000</double>
         </property>
        </widget>
       </item>
@@ -552,7 +684,7 @@
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QLineEdit" name="p_0_neighLineEdit">
+       <widget class="QDoubleSpinBox" name="p_0_neighLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -565,8 +697,20 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>0.1</string>
+        <property name="text" stdset="0">
+         <string>0,001</string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.001000000000000</double>
         </property>
        </widget>
       </item>
@@ -578,7 +722,7 @@
        </widget>
       </item>
       <item row="8" column="1">
-       <widget class="QLineEdit" name="num_of_iterLineEdit">
+       <widget class="QSpinBox" name="num_of_iterLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -591,8 +735,14 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>100</string>
+        <property name="text" stdset="0">
+         <string>5</string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="value">
+         <number>5</number>
         </property>
        </widget>
       </item>
@@ -604,9 +754,9 @@
        </widget>
       </item>
       <item row="9" column="1">
-       <widget class="QLineEdit" name="num_of_experLineEdit">
+       <widget class="QSpinBox" name="num_of_experLineEdit">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -620,8 +770,11 @@
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
+        <property name="text" stdset="0">
          <string>1</string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
         </property>
        </widget>
       </item>
@@ -633,7 +786,7 @@
        </widget>
       </item>
       <item row="10" column="1">
-       <widget class="QLineEdit" name="seedLineEdit">
+       <widget class="QSpinBox" name="seedLineEdit">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -648,6 +801,9 @@
           <width>97</width>
           <height>16777215</height>
          </size>
+        </property>
+        <property name="maximum">
+         <number>999999999</number>
         </property>
        </widget>
       </item>
@@ -691,16 +847,28 @@
      <item>
       <layout class="QGridLayout" name="gridLayout">
        <item row="1" column="2">
-        <widget class="QLineEdit" name="dc_penalty_lineEdit">
-         <property name="text">
-          <string>-1</string>
+        <widget class="QDoubleSpinBox" name="dc_penalty_lineEdit">
+         <property name="text" stdset="0">
+          <string>-1,00</string>
+         </property>
+         <property name="minimum">
+          <double>-99.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>-1.000000000000000</double>
          </property>
         </widget>
        </item>
        <item row="2" column="2">
-        <widget class="QLineEdit" name="dc_reward_lineEdit">
-         <property name="text">
-          <string>1</string>
+        <widget class="QDoubleSpinBox" name="dc_reward_lineEdit">
+         <property name="text" stdset="0">
+          <string>1,00</string>
+         </property>
+         <property name="minimum">
+          <double>-99.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
          </property>
         </widget>
        </item>
@@ -741,16 +909,28 @@ reward</string>
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLineEdit" name="dd_reward_lineEdit">
-         <property name="text">
-          <string>1</string>
+        <widget class="QDoubleSpinBox" name="dd_reward_lineEdit">
+         <property name="text" stdset="0">
+          <string>1,00</string>
+         </property>
+         <property name="minimum">
+          <double>-99.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="dd_penalty_lineEdit">
-         <property name="text">
-          <string>-1</string>
+        <widget class="QDoubleSpinBox" name="dd_penalty_lineEdit">
+         <property name="text" stdset="0">
+          <string>-1,00</string>
+         </property>
+         <property name="minimum">
+          <double>-99.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>-1.000000000000000</double>
          </property>
         </widget>
        </item>
@@ -762,16 +942,28 @@ reward</string>
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="cd_reward_lineEdit">
-         <property name="text">
-          <string>1</string>
+        <widget class="QDoubleSpinBox" name="cd_reward_lineEdit">
+         <property name="text" stdset="0">
+          <string>1,00</string>
+         </property>
+         <property name="minimum">
+          <double>-99.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
          </property>
         </widget>
        </item>
        <item row="3" column="2">
-        <widget class="QLineEdit" name="cc_penalty_lineEdit">
-         <property name="text">
-          <string>-1</string>
+        <widget class="QDoubleSpinBox" name="cc_penalty_lineEdit">
+         <property name="text" stdset="0">
+          <string>-1,00</string>
+         </property>
+         <property name="minimum">
+          <double>-99.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>-1.000000000000000</double>
          </property>
         </widget>
        </item>
@@ -875,7 +1067,7 @@ reward</string>
    </widget>
    <widget class="QGroupBox" name="groupBox_6">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -908,26 +1100,21 @@ reward</string>
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>571</width>
+       <width>582</width>
        <height>531</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
+     <layout class="QVBoxLayout" name="plot_layout" stretch="1,0">
       <item>
-       <widget class="QFrame" name="plot_placeholder">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="plotLayout" stretch="0">
+        <item>
+         <widget class="QLabel" name="plot_label">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -940,6 +1127,9 @@ reward</string>
         </item>
         <item>
          <widget class="QComboBox" name="comboBox_states">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -961,17 +1151,7 @@ reward</string>
           </item>
           <item>
            <property name="text">
-            <string>k-D strategies</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>k-C strategies</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>k-DC strategies</string>
+            <string>Payoff</string>
            </property>
           </item>
          </widget>
@@ -1004,6 +1184,9 @@ reward</string>
         </item>
         <item>
          <widget class="QSpinBox" name="spinBox_iter_step">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1019,36 +1202,11 @@ reward</string>
           <property name="specialValueText">
            <string/>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_play">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+          <property name="minimum">
+           <number>0</number>
           </property>
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="baseSize">
-           <size>
-            <width>0</width>
-            <height>1</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>▶⏸</string>
+          <property name="value">
+           <number>0</number>
           </property>
          </widget>
         </item>
@@ -1066,7 +1224,51 @@ reward</string>
          </spacer>
         </item>
         <item>
+         <widget class="QLabel" name="label_9">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>exp no</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="spinBox_exp_no">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>60</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="specialValueText">
+           <string/>
+          </property>
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="value">
+           <number>1</number>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="save_statistics">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1083,6 +1285,9 @@ reward</string>
         </item>
         <item>
          <widget class="QPushButton" name="save_pictures">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1173,7 +1378,7 @@ reward</string>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="level_LineEdit">
+       <widget class="QDoubleSpinBox" name="level_LineEdit">
         <property name="minimumSize">
          <size>
           <width>60</width>
@@ -1186,8 +1391,20 @@ reward</string>
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>1</string>
+        <property name="text" stdset="0">
+         <string>1,000</string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -1257,7 +1474,7 @@ reward</string>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="special_penalty_LineEdit">
+       <widget class="QDoubleSpinBox" name="special_penalty_LineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -1270,11 +1487,17 @@ reward</string>
           <height>25</height>
          </size>
         </property>
-        <property name="text">
-         <string>-10</string>
-        </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+        <property name="text" stdset="0">
+         <string>0,00</string>
+        </property>
+        <property name="minimum">
+         <double>-99.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.000000000000000</double>
         </property>
        </widget>
       </item>

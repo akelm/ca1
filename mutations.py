@@ -22,16 +22,15 @@ def mutation(state_arr: np.ndarray, strat_arr, params):
             "strat_mut": calc_mappings.strat_translate(new_strat_arr.flat),
         })
 
-        logging.custom(" STATE MUTATION ".center(80,"#"))
+        logging.custom(" STATE MUTATION ".center(80, "#"))
         logging.custom(df.to_string(index=False))
 
-
     def log_strategy():
-        logging.custom(" MUTATED STRATEGY ".center(80,"#"))
+        logging.custom(" MUTATED STRATEGY ".center(80, "#"))
         logging.custom(pd.DataFrame(calc_mappings.strat_translate(new_strat_arr)).to_string(index=False, header=False))
 
     def log_state():
-        logging.custom(" MUTATED STATE ".center(80,"#"))
+        logging.custom(" MUTATED STATE ".center(80, "#"))
         logging.custom(pd.DataFrame(state_zeros_mutated).to_string(index=False, header=False))
 
     # normal state mutation
@@ -46,7 +45,6 @@ def mutation(state_arr: np.ndarray, strat_arr, params):
     state_zeros_mutated = state_mutated.copy()
     state_zeros_mutated.flat[all_zeros] = calc_mappings.rng.uniform(0, 1, all_zeros.size) < params.p_0_neigh
 
-
     prob_arr: np.ndarray = np.random.uniform(0, 1, strat_arr.size).reshape(strat_arr.shape)
     mask = prob_arr < params.p_strat_mut
     rand_choice = partial(np.random.choice, size=1)
@@ -56,8 +54,3 @@ def mutation(state_arr: np.ndarray, strat_arr, params):
     log_state()
     log_strategy()
     return state_zeros_mutated, new_strat_arr
-
-
-
-
-

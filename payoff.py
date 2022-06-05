@@ -11,8 +11,9 @@ def payoff_table(state_arr, params):
         view: np.ndarray = np.lib.stride_tricks.sliding_window_view(np.pad(state_arr, 1), (3, 3)).reshape(
             [-1, 3, 3])
         df = pd.DataFrame({
-            "i": np.indices(state_arr.shape).reshape([-1, 2])[:, 0] + 1,
-            "j": np.indices(state_arr.shape).reshape([-1, 2])[:, 1] + 1,
+            "idx": np.arange(state_arr.size)+1,
+            "i": np.indices(state_arr.shape)[0].reshape(-1) + 1,
+            "j": np.indices(state_arr.shape)[1].reshape(-1) + 1,
             "state": state_arr.flat,
             "neigh": list(map(''.join, view[:, neigh_list[0], neigh_list[1]].astype(int).astype(str))),
             "num1": view[:, neigh_list[0], neigh_list[1]].sum(1),
